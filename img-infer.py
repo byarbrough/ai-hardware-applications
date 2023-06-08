@@ -29,7 +29,7 @@ def resize_and_rescale_image(image_path, input_shape):
 
 def picam_snap(image_path):
     # Capture the image using libcamera and save it to the specified path
-    subprocess.run(["libcamera-still", "-o", image_path])
+    subprocess.run(["libcamera-still", "-v", "0", "-n", "true", "-o", image_path])
 
 
 def tflite_infer(interpreter, input_data):
@@ -43,6 +43,7 @@ def tflite_infer(interpreter, input_data):
 # Create the tflite Interpreter
 model_path = "cat-dog.tflite"
 interpreter = tflite.Interpreter(model_path=model_path)
+interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
