@@ -1,8 +1,7 @@
-import picamera
 import tflite_runtime.interpreter as tflite
 import numpy as np
 from PIL import Image
-from time import sleep
+import subprocess
 
 
 def resize_and_rescale_image(image_path, input_shape):
@@ -29,12 +28,8 @@ def resize_and_rescale_image(image_path, input_shape):
 
 
 def picam_snap(image_path):
-    # Initialize the Pi camera
-    camera = picamera.PiCamera()
-    sleep(0.1)
-
-    # Capture the image
-    camera.capture(image_path)
+    # Capture the image using libcamera and save it to the specified path
+    subprocess.run(["libcamera-still", "-o", image_path])
 
 
 def tflite_infer(interpreter, input_data):
