@@ -1,3 +1,6 @@
+# Things for training notebooks
+*.zip
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
