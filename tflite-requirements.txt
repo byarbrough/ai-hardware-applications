@@ -1,0 +1,2 @@
+# Requirements for running inference on embedded devices
+tflite-runtime==2.11.0

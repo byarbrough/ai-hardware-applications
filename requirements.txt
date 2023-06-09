@@ -1,4 +1,5 @@
+# For running training notebooks
 matplotlib
 numpy
 scikit-learn
-
+tensorflow
